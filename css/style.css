@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#loginScreen{
+    padding: 0;
+    margin: 0;
+    background-image: url("../img/Login_03.jpg") ;
+    width: 1440px;
+    height: 1080px;
+}

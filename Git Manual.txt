@@ -1,0 +1,38 @@
+Git - Rebase: ##### EZT HASZNÁLJUK #####
+
+0. git pull origin master
+1. git branch <branchname>
+2. git checkout <branchname>
+3. git add . 
+4. git commit -m "..." (Ismétlődő lépés lehet)
+----------------------------
+4. git checkout master
+5. git pull origin master
+6. git checkout <branchname>
+7. git rebase <branchname> master
+8. git add . (itt nem kell commit!)
+9. git rebase --continue
+10. git checkout master
+11. git pull origin master
+12. git rebase (hátha volt változás, miközben rebaseltünk: Ekkor ezzel a paranccsal visszaugrunk a 7. lépésre igazából)
+13. git merge <branchname> master
+14. git push
+
+// Git rebase-ből kilépés: git rebase --abort
+
+Git - Merge: ##### NEM EZT #####
+
+0. git pull origin master
+1. git branch <branchname>
+2. git checkout <branchname>
+3. git add . +++ git commit -m "..." (Ismétlődő lépés lehet)
+----------------------------
+4. git checkout master
+5. git pull origin master
+6. git merge <branchname> master (VAN / NINCS conflict)
+7. Konfliktuskezelés
+8. git add .
+9. git commit -m "..."
+10. git merge --continue
+11. git push origin master
+12. git branch -d <branchname>
