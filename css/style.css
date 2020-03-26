@@ -1,11 +1,109 @@
+
+/*------------------------------------------------------------------
+[Tartalomjegyzék]
+
+1. Minden
+2. Bejelentkezés
+3.
+4.
+5.
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+# [Színkódok]
+
+# Világosbarna (Login gomb háttere): #d1b99c
+# Sötétbarna (Betűk): #4c463c
+# Tengerkék (Input mezők szegélyei) #195e99
+-------------------------------------------------------------------*/
+
+
+/*  1. Minden
+----------------------- */
 *{
     padding: 0;
     margin: 0;
 }
-#loginScreen{
+
+
+/*  2. Bejelentkezés
+------------------------ */
+
+#loginPage{
+    position: absolute;
     padding: 0;
     margin: 0;
-    background-image: url("../img/Login_03.jpg") ;
+    background-image: url("../img/login-page.jpg") ;
     width: 1440px;
     height: 1080px;
 }
+.keypress{
+    display: block;
+    height: 36px;
+    width: 36px;
+    background: transparent;
+    /*border: none !important;*/
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 20%;
+}
+#letterA{
+    position: absolute;
+    left: 449px;
+    top: 856px;
+}
+
+.hvr-radial-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+  background: rgb(255, 145, 0);
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-radial-in:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #e1e1e1;
+  border-radius: 100%;
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-radial-in:hover, .hvr-radial-in:focus, .hvr-radial-in:active {
+  color: white;
+}
+.hvr-radial-in:hover:before, .hvr-radial-in:focus:before, .hvr-radial-in:active:before {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+
+/*  3. 
+------------------------ */
+
+
+/*  4. 
+------------------------ */
+
+
+/*  5. 
+------------------------ */
