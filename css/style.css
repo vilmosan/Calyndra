@@ -21,8 +21,8 @@
 /*  1. Minden
 ----------------------- */
 *{
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -30,31 +30,88 @@
 ------------------------ */
 
 #loginPage{
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    background-image: url("../img/login-page.jpg") ;
-    width: 1440px;
-    height: 1080px;
-}
-.keypress{
-    display: block;
-    height: 36px;
-    width: 36px;
-    background: transparent;
-    /*border: none !important;*/
-    border-radius: 50%;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 20%;
-}
-#letterA{
-    position: absolute;
-    left: 449px;
-    top: 856px;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  background-image: url("../img/login-page.jpg") ;
+  width: 1440px;
+  height: 1080px;
 }
 
+#loginPage button{
+  position: absolute;
+}
+
+#loginPage input{
+  position: absolute;
+  left:500px;
+  top: 650px;
+}
+
+.keypress{
+  display: block;
+  height: 29px;
+  width: 36px;
+  background: transparent;
+  /*border: none !important;*/
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 20%;
+}
+
+/* 2-3-4-5-6-7-8-9-Ö-Ü */
+#number2{ left: 465px; top: 756px; }
+#number3{ left: 514px; top: 755px;  }
+#number4{ left: 561px; top: 755px; }
+#number5{ left: 609px; top: 756px; }
+#number6{ left: 658px; top: 755px; }
+#number7{ left: 704px; top: 755px; }
+#number8{ left: 754px; top: 756px;}
+#number9{ left: 802px; top: 757px; }
+#diaeresisO{ left: 849px; top: 759px; }
+#diaeresisU{ left: 898px; top: 757px; }
+
+/* Q-W-E-R-T-Z-U-I-O-P-Ő */
+#letterQ{ left: 436px; top: 802px; }
+#letterW{ left: 488px; top: 803px; }
+#letterE{ left: 538px; top: 803px; }
+#letterR{ left: 587px; top: 804px; }
+#letterT{ left: 635px; top: 804px; }
+#letterZ{ left: 684px; top: 803px; }
+#letterU{ left: 729px; top: 805px; }
+#letterI{ left: 780.5px; top: 805px; }
+#letterO{ left: 831px; top: 806px; height: 25px; width: 31px; border: none; }
+#letterP{ left: 876px; top: 806px; }
+#doubleAcuteO{ left: 923px; top: 807px; }
+
+/* A-S-D-F-G-H-J-K-L-É-Á */
+#letterA{ left: 449px; top: 858px; }
+#letterS{ left: 498px; top: 860px; }
+#letterD{ left: 550px; top: 860px; }
+#letterF{ left: 600px; top: 860px; }
+#letterG{ left: 646px; top: 861px; }
+#letterH{ left: 694px; top: 860px; }
+#letterJ{ left: 743px; top: 861px; }
+#letterK{ left: 793px; top: 861px; }
+#letterL{ left: 841.8px; top: 861px; height: 29px; width: 33px; }
+#acuteE{ left: 889.3px; top: 863.5px; height: 26px; width: 32px; border: none; }
+#acuteA{ left: 941px; top: 862px; height: 29px; width: 33px; }
+
+/* Y-X-C-V-B-N-M-,-.-Ó */
+#letterY{ left: 479px; top: 913px; }
+#letterX{ left: 528px; top: 915px; }
+#letterC{ left: 578px; top: 913px; }
+#letterV{ left: 626px; top: 915px; }
+#letterB{ left: 674px; top: 916px; }
+#letterN{ left: 722px; top: 915px; }
+#letterM{ left: 773px; top: 916px; }
+#charComma{ left: 820px; top: 916px; }
+#charDot{ left: 868px; top: 916px; }
+#acuteO{ left: 923px; top: 918px; }
+
+/* Narancssárga hover effektus az írógép billentyűire */
 .hvr-radial-in {
   display: inline-block;
   vertical-align: middle;
