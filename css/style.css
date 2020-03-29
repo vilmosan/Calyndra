@@ -20,7 +20,13 @@
 
 /*  1. Minden
 ----------------------- */
-*{
+html {
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
   padding: 0;
   margin: 0;
 }
@@ -33,7 +39,7 @@
   position: absolute;
   padding: 0;
   margin: 0;
-  background-image: url("../img/login-page.jpg") ;
+  background-image: url("../img/test.jpg") ;
   width: 1440px;
   height: 1080px;
 }
@@ -42,10 +48,16 @@
   position: absolute;
 }
 
-#loginPage input{
+#usernameInput{
   position: absolute;
   left:500px;
-  top: 650px;
+  top: 500px;
+}
+
+#passwordInput{
+  position: absolute;
+  left:500px;
+  top: 550px;
 }
 
 .keypress{
@@ -63,7 +75,7 @@
 
 /* 2-3-4-5-6-7-8-9-Ö-Ü */
 #number2{ left: 465px; top: 756px; }
-#number3{ left: 514px; top: 755px;  }
+#number3{ left: 514px; top: 755px; }
 #number4{ left: 561px; top: 755px; }
 #number5{ left: 609px; top: 756px; }
 #number6{ left: 658px; top: 755px; }
@@ -71,6 +83,7 @@
 #number8{ left: 754px; top: 756px;}
 #number9{ left: 802px; top: 757px; }
 #diaeresisO{ left: 849px; top: 759px; }
+#diaeresisU{ left: 898px; top: 757px; }
 #diaeresisU{ left: 898px; top: 757px; }
 
 /* Q-W-E-R-T-Z-U-I-O-P-Ő */
@@ -152,6 +165,135 @@
   -webkit-transform: scale(0);
   transform: scale(0);
 }
+
+
+
+
+/* Switch starts here */
+.rocker {
+  box-sizing: inherit;
+  display: inline-block;
+  position: absolute;
+  left: 657.5px;
+  top: 630px;
+  /*
+  SIZE OF SWITCH
+  ==============
+  All sizes are in em - therefore
+  changing the font-size here
+  will change the size of the switch.
+  See .rocker-small below as example.
+  */
+  font-size: 1em;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+}
+
+.rocker::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 0;
+}
+
+.rocker input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-left,
+.switch-right {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
+}
+
+.switch-left {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
+}
+
+.switch-right {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #885902;
+  color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+  content: "";
+  position: absolute;
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switch-left::before {
+  left: -0.4em;
+}
+
+.switch-right::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+input:checked + .switch-left {
+  background-color: #526900;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input:checked + .switch-left::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input:checked + .switch-left + .switch-right {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input:checked + .switch-left + .switch-right::before {
+  background-color: #ccc;
+}
+
+input:focus + .switch-left { color: #333; }
+input:checked:focus + .switch-left { color: #fff; }
+input:focus + .switch-left + .switch-right { color: #fff; }
+input:checked:focus + .switch-left + .switch-right { color: #333; }
+
 
 
 /*  3. 
