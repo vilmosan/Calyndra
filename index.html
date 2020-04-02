@@ -15,16 +15,26 @@
         <main>
             <div class="m-auto"  id="loginPage">
 
+                    
+                <div class="box-container" id="usernameInputBox">
+                    <div class="box">
+                        <input type="text" placeholder="Username" id="usernameInput">
+                    </div>
+                </div>
+                    
+                <div class="box-container" id="passwordInputBox">
+                    <div class="box">
+                        <input type="password" placeholder="Password" id="passwordInput">
+                    </div>
+                </div>
+
                 <label class="rocker">
                     <input id="fieldSwitchButton" type="checkbox" checked>
                     <span class="switch-left">Name</span>
                     <span class="switch-right">Pass</span>
                 </label>
-                  
-                  
-                  
-                <input id="usernameInput" value="" placeholder="Username" />
-                <input id="passwordInput" value="" placeholder="Password" type="password" />
+                
+                <button class="clearButton hvr-radial-in" id="clearInputButton"></button>
                 <button class="keypress hvr-radial-in" data-code="44" id="charComma"></button>
                 <button class="keypress hvr-radial-in" data-code="46" id="charDot"></button>
                 <button class="keypress hvr-radial-in" data-code="50" id="number2"></button>

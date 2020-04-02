@@ -2,6 +2,7 @@
 /*------------------------------------------------------------------
 [Tartalomjegyzék]
 
+0. Import
 1. Minden
 2. Bejelentkezés
 3.
@@ -17,6 +18,18 @@
 # Tengerkék (Input mezők szegélyei) #195e99
 -------------------------------------------------------------------*/
 
+/*  0. Import
+----------------------- */
+@font-face {
+  font-family: 'OCR A EXTENDED';
+  src: 
+    url('../fonts/OCRAEXT.TTF') format(TrueType);
+}
+@font-face {
+  font-family: 'Imprint MT Shadow';
+  src: 
+    url('../fonts/IMPRISHA.TTF') format(TrueType);
+}
 
 /*  1. Minden
 ----------------------- */
@@ -39,25 +52,13 @@ html {
   position: absolute;
   padding: 0;
   margin: 0;
-  background-image: url("../img/test.jpg") ;
+  background-image: url("../img/login-page.jpg") ;
   width: 1440px;
   height: 1080px;
 }
 
 #loginPage button{
   position: absolute;
-}
-
-#usernameInput{
-  position: absolute;
-  left:500px;
-  top: 500px;
-}
-
-#passwordInput{
-  position: absolute;
-  left:500px;
-  top: 550px;
 }
 
 .keypress{
@@ -70,7 +71,23 @@ html {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  opacity: 20%;
+  opacity: 30%;
+}
+.clearButton{
+  display: block;
+  background: transparent;
+  /*border: none !important;*/
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 30%;
+}
+#clearInputButton { 
+  left: 957px;
+  top: 748px;
+  height: 36px;
+  width: 44px; 
 }
 
 /* 2-3-4-5-6-7-8-9-Ö-Ü */
@@ -166,26 +183,15 @@ html {
   transform: scale(0);
 }
 
-
-
-
-/* Switch starts here */
+/* Kapcsoló a beviteli mezőkhöz */
 .rocker {
   box-sizing: inherit;
   display: inline-block;
   position: absolute;
   left: 657.5px;
   top: 630px;
-  /*
-  SIZE OF SWITCH
-  ==============
-  All sizes are in em - therefore
-  changing the font-size here
-  will change the size of the switch.
-  See .rocker-small below as example.
-  */
   font-size: 1em;
-  font-family: monospace;
+  font-family: monospace !important;
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
@@ -294,6 +300,41 @@ input:checked:focus + .switch-left { color: #fff; }
 input:focus + .switch-left + .switch-right { color: #fff; }
 input:checked:focus + .switch-left + .switch-right { color: #333; }
 
+/* Beviteli mezők */
+.box-container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: OCR A EXTENDED, monospace, serif;
+}
+
+#usernameInputBox{
+  top: 15%;
+  left: 50%;
+}
+
+#passwordInputBox{
+  top: 19.3%;
+  left: 50%;
+}
+
+.box-container .box {
+  margin-bottom: 30px;
+  display: inline-block;
+  position: relative;
+}
+
+.box-container .box input {
+  padding: 5px 10px;
+  height: 30px;
+  font-size: 1em;
+  line-height: 45px;
+  border: 2px solid #195e99;
+  width: 250px;
+  outline: none;
+  background: #fff;
+  color: #4c463c;
+}
 
 
 /*  3. 

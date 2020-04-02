@@ -17,6 +17,19 @@ $(document).ready(function(){
     });
 
     /**
+     * BACK SPACER! Egy billentyű az írógépen, amely kitörli (teljesen) 
+     * a beírt karaktereket a Username || Password beviteli mezőből,
+     * attól függően, hogy melyik irányba van kapcsolva a NAME / PASS kapcsoló.
+     */
+    $('#clearInputButton').click(function(){
+        if(usernameFieldInput === true){
+            document.getElementById("usernameInput").value = "";
+        } else {
+            document.getElementById("passwordInput").value = "";
+        };
+    }); 
+
+    /**
      * Keypress osztályban lévő gombok lenyomása után
      * kiszedi a hozzájuk társított ASCII-kódot amit megadtunk
      * HTML-ben a data-code paramétereként, majd hozzáfűzi az
@@ -37,4 +50,5 @@ $(document).ready(function(){
         };
         
     });
+    
 });
