@@ -336,6 +336,52 @@ input:checked:focus + .switch-left + .switch-right { color: #333; }
   color: #4c463c;
 }
 
+/* Bejelentkezési gomb */
+.loginButton{
+  position: absolute;
+  color: #4c463c;
+  background-color: #d1b99c;
+  border: 2px solid #304d66;
+  font-family: OCR A EXTENDED, monospace, serif;
+  font-stretch: ultra-expanded;
+  -webkit-box-shadow: inset 1px 1px 10px #333;
+  -moz-box-shadow:    inset 1px 1px 10px #333;
+  box-shadow:         inset 1px 1px 10px #333;
+}
+
+#loginButtonId { 
+  left: 655px;
+  top: 229px;
+  height: 30px;
+  width: 130px; 
+}
+
+.hvr-icon-forward {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-forward .hvr-icon {
+  position: relative;
+  left: 15px;
+  top: 1.5px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-icon-forward:hover .hvr-icon, .hvr-icon-forward:focus .hvr-icon, .hvr-icon-forward:active .hvr-icon {
+  -webkit-transform: translateX(4px);
+  transform: translateX(4px);
+}
+
 
 /*  3. 
 ------------------------ */
