@@ -55,7 +55,7 @@ html {
   background-image: url("../img/login-page.jpg") ;
   width: 1440px;
   height: 1080px;
-  z-index: -1;
+  /*z-index: -1;*/
 }
 
 #loginPage button{

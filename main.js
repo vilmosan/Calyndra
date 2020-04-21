@@ -1,54 +1,44 @@
-$(document).ready(function(){
+import Home from "./apps/Home.js";
+import SignUp from "./apps/SignUp.js";
+import Calendar from "./apps/Calendar.js";
+import Financials from "./apps/Financials.js";
+import YourContacts from "./apps/YourContacts.js";
+import AccountSettings from "./apps/AccountSettings.js";
+let app;
 
-    let usernameFieldInput = true;
-    /**
-     * Megvizsgálja, hogy az írógépen lévő NAME / PASS kapcsoló
-     * melyik irányba van kapcsolva, majd ezt eltárolja egy változóban,
-     * ami alapján a későbbiekben eldől, hogy melyik beviteli mezőbe
-     * kerülnek a "lenyomott" karakterek.
-     */
-    $('#fieldSwitchButton').change(function(){
-        if(this.checked) {
-            usernameFieldInput = true;
-        }
-        else {
-            usernameFieldInput = false;
-        }
+window.addEventListener("DOMContentLoaded", function () {
+
+    app = new Home(document.getElementById("canvas"));
+
+    const HomePage = document.getElementById("home");
+    HomePage.addEventListener("click", function () {
+        app = new Home(document.getElementById("canvas"));
     });
 
-    /**
-     * BACK SPACER! Egy billentyű az írógépen, amely kitörli (teljesen) 
-     * a beírt karaktereket a Username || Password beviteli mezőből,
-     * attól függően, hogy melyik irányba van kapcsolva a NAME / PASS kapcsoló.
-     */
-    $('#clearInputButton').click(function(){
-        if(usernameFieldInput === true){
-            document.getElementById("usernameInput").value = "";
-        } else {
-            document.getElementById("passwordInput").value = "";
-        };
-    }); 
 
-    /**
-     * Keypress osztályban lévő gombok lenyomása után
-     * kiszedi a hozzájuk társított ASCII-kódot amit megadtunk
-     * HTML-ben a data-code paramétereként, majd hozzáfűzi az
-     * átkonvertált karaktert a Username || Password beviteli mezőhöz.
-     */
-    $('.keypress').click(function() {
-
-        let code = $(this).data('code');
-
-        if(usernameFieldInput === true){
-            $('#usernameInput').val(function(i, val) {
-                return val + String.fromCharCode(code);                
-            });
-        } else {
-            $('#passwordInput').val(function(i, val) {
-                return val + String.fromCharCode(code);                
-            });
-        };
-        
+    const SignUpage = document.getElementById("sign_up");
+    SignUpage.addEventListener("click", function () {
+        app = new SignUp(document.getElementById("canvas"));
     });
-    
+
+    const CalendarPage = document.getElementById("calendar");
+    CalendarPage.addEventListener("click", function () {
+        app = new Calendar(document.getElementById("canvas"));
+    });
+
+    const FinancialsPage = document.getElementById("financials");
+    FinancialsPage.addEventListener("click", function () {
+        app = new Financials(document.getElementById('canvas'));
+    });
+
+    const YourContactsPage = document.getElementById("your_contacts");
+    YourContactsPage.addEventListener("click", function () {
+        app = new YourContacts(document.getElementById("canvas"));
+    });
+
+    const AccountSettingsPage = document.getElementById("account_settings");
+    AccountSettingsPage.addEventListener("click", function () {
+        app = new AccountSettings(document.getElementById("canvas"));
+    });
+
 });
