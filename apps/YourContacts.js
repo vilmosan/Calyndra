@@ -1,16 +1,15 @@
 import Application from './Application.js';
 
-export class yourContacts extends Application {
+export class YourContacts extends Application {
     constructor(canvas) {
         super(canvas);
 
-
         this.initialize();
 
+        
     }
 
     initialize() {
-
 
         const h1element = document.createElement('h1');
         this.canvas.append(h1element);
@@ -21,4 +20,4 @@ export class yourContacts extends Application {
 
 }
 
-export default yourContacts;
+export default YourContacts;
