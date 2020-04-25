@@ -40,22 +40,6 @@ window.addEventListener("DOMContentLoaded", function () {
         app = new AccountSettings(document.getElementById("canvas"));
     });
 
-    /**
-     * Kereső funkció a 'Your Contacts' táblázathoz.
-     * Egy input-boxba Enter lenyomása nélkül megvizsgálja
-     * a beírt karaktersorozatot és leszűkíti a táblázatot az alapján.
-     */
-    $(document).ready(function () {
-        (function ($) {
-            $('#filter').keyup(function () {
-                var rex = new RegExp($(this).val(), 'i');
-                $('.searchable tr').hide();
-                $('.searchable tr').filter(function () {
-                    return rex.test($(this).text());
-                }).show();
-            });
-        }(jQuery));
-    });
 
 });
 
