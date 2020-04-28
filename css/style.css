@@ -6,7 +6,7 @@
 2. Bejelentkezés
 3. Header / Navigation
 4. Your Contacts
-5.
+5. Calendar
 6.
 7.
 8.
@@ -671,8 +671,230 @@ table.table td i {
 }	
 
 
-/*  5. 
+/*  5. Calendar
 ------------------------ */
+#calendarDiv
+{
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #aaa;
+  background: #f8f8f8;
+}
+
+#calendarDiv #title-bar
+{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 60px;
+	background: rgb(171,42,145);
+}
+  #calendarDiv h1
+	{
+		width: 90%;
+		max-width: 500px;
+		margin: 0 auto;
+		color: #fff;
+		font-size: x-large;
+		padding-top: 10px;
+		text-align: center;
+	}
+
+#calendarDiv #main > .inside
+{
+	width: 90%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 80px 0;
+}
+
+#calendarDiv h2
+{
+	font-weight: lighter;
+	color: #444;
+	text-align: center;
+	font-size: 130%;
+	margin: 0;
+	margin-bottom: 25px;
+}
+#calendarDiv h3
+{
+	font-weight: lighter;
+	color: #444;
+	font-size: 120%;
+	margin: 0;
+	margin-bottom: 15px;
+}
+#calendarDiv p
+{
+	margin: 0;
+	margin-bottom: 15px;
+}
+#calendarDiv a
+{
+	color: rgb(171,42,145);
+	text-decoration: none;
+}
+#calendarDiv a:hover
+{
+	color: rgb(132, 32, 112);
+}
+#calendarDiv a:active
+{
+	color: rgb(38, 9, 32);
+}
+
+#calendarDiv ul.list
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+  #calendarDiv ul.list li
+	{
+		padding: 25px;
+		background: #fff;
+		margin: 0;
+		margin-bottom: 25px;
+		box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
+	}
+    #calendarDiv ul.list li a
+		{
+			display: block;
+			float: right;
+		}
+		#calendarDiv ul.list li > div::after
+		{
+			display: block;
+			content: "";
+			clear: both;
+		}
+
+#calendarDiv form
+{
+	padding: 25px;
+	background: #fff;
+	margin: 0;
+	margin-bottom: 25px;
+	text-align: center;
+	box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
+}
+  #calendarDiv form p.message
+	{
+		color: rgb(42, 171, 151);
+		padding-bottom: 10px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid rgba(42, 171, 151, 0.25);
+	}
+	#calendarDiv form p.message.error
+	{
+		color: rgb(171, 42, 42);
+		border-bottom: 1px solid rgba(171, 42, 42, 0.25);
+	}
+	#calendarDiv form > div
+	{
+		margin-bottom: 15px;
+	}
+    #calendarDiv form label
+		{
+			font-size: 95%;
+			display: block;
+			margin-bottom: 5px;
+		}
+		#calendarDiv form input,
+		#calendarDiv form textarea
+		{
+			background: #f4f4f4;
+			border: 1px solid #e4e4e4;
+			padding: 10px;
+			box-sizing: border-box;
+			font-size: 100%;
+			font-family: "std";
+			color: #666;
+			width: 100%;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			outline: 0;
+			border-radius: 0;
+		}
+		#calendarDiv form textarea
+		{
+			resize: none;
+			height: 75px;
+		}
+		#calendarDiv form button
+		{
+			background: rgb(171,42,145);
+			border: 0;
+			padding: 10px;
+			box-sizing: border-box;
+			font-size: 105%;
+			text-transform: uppercase;
+			font-weight: lighter;
+			color: #fff;
+			width: 100%;
+			outline: 0;
+			cursor: pointer;
+			max-width: 300px;
+		}
+		#calendarDiv form button:hover
+		{
+			background: rgb(132, 32, 112);
+		}
+		#calendarDiv form button:active
+		{
+			background: rgb(38, 9, 32);
+		}
+
+#calendarDiv #navigation-bar
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 65px;
+	border-top: 1px solid #e8e8e8;
+	background: #f4f4f4;
+}
+  #calendarDiv #navigation-bar > ul
+	{
+		width: 90%;
+		height: 100%;
+		max-width: 500px;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+	}
+    #calendarDiv #navigation-bar > ul li
+		{
+			width: 50%;
+			height: 100%;
+			float: left;
+			text-align: center;
+		}
+      #calendarDiv #navigation-bar > ul li a
+			{
+				display: block;
+				height: 100%;
+				text-decoration: none;
+				color: #888;
+				padding-top: 10px;
+				font-size: 175%;
+			}
+			#calendarDiv #navigation-bar > ul li a:hover
+			{
+				background: rgba(0,0,0, 0.05);
+			}
+			#calendarDiv #navigation-bar > ul li a:active
+			{
+				background: rgba(0,0,0, 0.1);
+			}
 
 /*  6. 
 ------------------------ */
