@@ -1,3 +1,5 @@
+//   *****   Here is the implementation for the To-do-list.   *****
+
 import Application from './Application.js';
 
 export class Calandar extends Application {
@@ -10,29 +12,44 @@ export class Calandar extends Application {
     }
 
     initialize() {
-        const calendar_div = document.createElement('div');
-        calendar_div.id = 'calendarDiv'
-        this.canvas.append(calendar_div);
-        this.initializeCanvas(calendar_div);
+        this.initializeCanvas(this.canvas);
         
         let contr = new Controller();
         contr.run();
     }
 
     /**
-     * This code create the required HTML into the canvas div
+     * This code create the required HTML into a div
      */
-    initializeCanvas(canvas){    
+    initializeCanvas(canvas){   
+        
+        // calendarDiv
+        const calendar_div = document.createElement('div');
+        calendar_div.id = 'calendarDiv'
+        calendar_div.className = "contactsDiv container col-10";
+        canvas.append(calendar_div);
+
+        // calendarMainDiv
+        const calendar_main_div = document.createElement('div');
+        calendar_main_div.id = 'calendarMainDiv'
+        calendar_main_div.className = "vm-main";
+        calendar_div.append(calendar_main_div);
+
         const title_bar_div = document.createElement('div');
-        canvas.append(title_bar_div);
+        calendar_main_div.append(title_bar_div);
         title_bar_div.id = 'title-bar';
+        title_bar_div.className = "vm-header";
     
         let h = document.createElement('h1');
         title_bar_div.append(h);
-        h.textContent = 'Az én To-do listám';
+        h.textContent = 'Az én To-do listám  ';
+
+        let i = document.createElement('i');
+        h.append(i);
+        i.className = "fas fa-clipboard-list";
     
         const main_div = document.createElement('div');
-        canvas.append(main_div);
+        calendar_main_div.append(main_div);
         main_div.id = 'main';
     
         const inside_div = document.createElement('div');
@@ -93,11 +110,6 @@ export class Calandar extends Application {
         const collection_section = document.createElement('section');
         inside_div.append(collection_section);
         collection_section.className = "collection";
-    
-        h = document.createElement('h2');
-        collection_section.append(h);
-        h.textContent = 'Teendők Listája';
-    
         p = document.createElement('p');
         collection_section.append(p);
         p.className = 'info';
@@ -107,7 +119,7 @@ export class Calandar extends Application {
         list_ul.className = "list";
     
         const navigation_bar_div = document.createElement('div');
-        canvas.append(navigation_bar_div);
+        calendar_main_div.append(navigation_bar_div);
         navigation_bar_div.id = 'navigation-bar';
     
         let ul = document.createElement('ul');
@@ -120,7 +132,9 @@ export class Calandar extends Application {
         li.append(a);
         a.href = "";
         a.title = 'Új teendő';
-        a.textContent = 'Új'
+        i = document.createElement('i');
+        i.className = "fas fa-plus-square";
+        a.append(i);
     
         li = document.createElement('li');
         ul.append(li);
@@ -129,7 +143,9 @@ export class Calandar extends Application {
         li.append(a);
         a.href = "";
         a.title = 'Teendők listája';
-        a.textContent = 'Eddigiek'
+        i = document.createElement('i');
+        i.className = "far fa-list-alt";
+        a.append(i);
     
     }
 
@@ -138,10 +154,8 @@ export class Calandar extends Application {
 
 export default Calandar;
 
-/*
-   *****   Here is the implementation for the To-do-list.   *****
-   It is similar to MVC, although the View and Controller both in the same class
-*/
+
+// *** It is similar to MVC, although the View and Controller both in the same class ***
 
 /**
  * The main class. This responsible for both the view and working strategy
@@ -257,21 +271,19 @@ class Controller{
 
         for(let i in items){
             let item = items[i];
-            html += ('<li><h3>'+ item.title +'</h3><p>'+ (item.description ? item.description : "Nincs leírása a teendőnek.") +'</p><div><a href="" data-index="'+ item.index +'">Elkészült</a></div></li>');
+            html += ('<li><h3>'+ item.title +'</h3><p>'+ (item.description ? item.description : "Nincs leírása a teendőnek.") +'</p><div><a href="" data-index="'+ item.index +'"><i class="fas fa-check"></i> Elkészült</a></div></li>');
         }
 
         this.collectionSection.querySelector('ul').innerHTML = html;
 
         let links = this.collectionSection.querySelectorAll('ul a');
 
-        function doneClick(evt){
-            evt.preventDefault();
-            let index = this.getAttribute("data-index");
-            onDone(parseInt(index));
-        }
-
         for(let i in links){
-            links[i].onclick = doneClick;
+            links[i].onclick = evt =>{
+                evt.preventDefault();
+                let index = evt.target.getAttribute("data-index");
+                onDone(parseInt(index));
+            }
         }
     }
 }
@@ -338,7 +350,7 @@ class Model{
     }
 
     loadData(){
-        let data = localStorage.getItem("todoData");
+        let data = localStorage.getItem("Calyndra_todoData");
 
         if(data){
             this.list = JSON.parse(data)

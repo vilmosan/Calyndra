@@ -673,38 +673,26 @@ table.table td i {
 
 /*  5. Calendar
 ------------------------ */
-#calendarDiv
-{
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
-  height: 100%;
-  font-family: sans-serif;
-  line-height: 1.6;
-  color: #aaa;
-  background: #f8f8f8;
+#calendarDiv .vm-main {
+  background: #fff;
+  padding: 20px 25px;
+  margin: 30px 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-
-#calendarDiv #title-bar
-{
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 60px;
-	background: rgb(171,42,145);
+#calendarDiv .vm-header {        
+  padding-bottom: 15px;
+  background: #4c463c;
+  color: #fff;
+  padding: 16px 30px;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
 }
-  #calendarDiv h1
-	{
-		width: 90%;
-		max-width: 500px;
-		margin: 0 auto;
-		color: #fff;
-		font-size: x-large;
-		padding-top: 10px;
-		text-align: center;
-	}
-
+#calendarDiv .vm-header h1 {
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+}
 #calendarDiv #main > .inside
 {
 	width: 90%;
@@ -737,12 +725,12 @@ table.table td i {
 }
 #calendarDiv a
 {
-	color: rgb(171,42,145);
+	color: #444;
 	text-decoration: none;
 }
 #calendarDiv a:hover
 {
-	color: rgb(132, 32, 112);
+	color: rgb(51, 51, 51);
 }
 #calendarDiv a:active
 {
@@ -757,12 +745,19 @@ table.table td i {
 }
   #calendarDiv ul.list li
 	{
+    border-style: outset;
+    border-width: 1px;
 		padding: 25px;
-		background: #fff;
+		background-color: #d1b99c3b;
 		margin: 0;
 		margin-bottom: 25px;
-		box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
-	}
+    box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
+    border-radius: 5%;
+  }
+    #calendarDiv ul.list li div{
+      margin: 0;
+      padding: 0;
+    }
     #calendarDiv ul.list li a
 		{
 			display: block;
@@ -809,7 +804,7 @@ table.table td i {
 		#calendarDiv form input,
 		#calendarDiv form textarea
 		{
-			background: #f4f4f4;
+			background-color: #d1b99c3b;
 			border: 1px solid #e4e4e4;
 			padding: 10px;
 			box-sizing: border-box;
@@ -821,7 +816,8 @@ table.table td i {
 			-moz-appearance: none;
 			appearance: none;
 			outline: 0;
-			border-radius: 0;
+      border-radius: 5%;
+      box-shadow: 1px 1px;
 		}
 		#calendarDiv form textarea
 		{
@@ -830,22 +826,29 @@ table.table td i {
 		}
 		#calendarDiv form button
 		{
-			background: rgb(171,42,145);
-			border: 0;
 			padding: 10px;
 			box-sizing: border-box;
 			font-size: 105%;
 			text-transform: uppercase;
-			font-weight: lighter;
-			color: #fff;
 			width: 100%;
 			outline: 0;
 			cursor: pointer;
-			max-width: 300px;
+      max-width: 300px;
+      color: #4c463c;
+      background-color: #d1b99c;
+      border: 2px solid #304d66;
+      font-family: OCR A EXTENDED, monospace, serif;
+      font-stretch: ultra-expanded;
+      -webkit-box-shadow: inset 1px 1px 10px #333;
+      -moz-box-shadow:    inset 1px 1px 10px #333;
+      box-shadow:         inset 1px 1px 10px #333;
+      border-radius: 5%;
 		}
 		#calendarDiv form button:hover
 		{
-			background: rgb(132, 32, 112);
+			background: #4c463c;
+      border: 2px solid #d1b99c;
+      color: #fff;
 		}
 		#calendarDiv form button:active
 		{
@@ -855,12 +858,12 @@ table.table td i {
 #calendarDiv #navigation-bar
 {
 	position: fixed;
-	left: 0;
 	bottom: 0;
-	width: 100%;
+	width: 80%;
 	height: 65px;
 	border-top: 1px solid #e8e8e8;
-	background: #f4f4f4;
+  background: #f4f4f4;
+  margin: auto;
 }
   #calendarDiv #navigation-bar > ul
 	{
