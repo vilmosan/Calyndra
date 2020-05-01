@@ -754,6 +754,15 @@ table.table td i {
     box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
     border-radius: 5%;
   }
+    #calendarDiv .deadline{
+      float: right;
+      padding-bottom: 10px;
+      font-style: italic;
+      text-align: right;
+    }
+    #calendarDiv ul.list li.expired{
+      background-color: #ce0f0f3b;
+    }
     #calendarDiv ul.list li div{
       margin: 0;
       padding: 0;
@@ -823,7 +832,10 @@ table.table td i {
 		{
 			resize: none;
 			height: 75px;
-		}
+    }
+    #calendarDiv form input[type=date]{
+      width: 40%;
+    }
 		#calendarDiv form button
 		{
 			padding: 10px;

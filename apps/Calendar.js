@@ -76,7 +76,6 @@ export class Calandar extends Application {
         p = document.createElement('p');
         form.append(p);
         p.className = 'message error';
-        p.textContent = 'A beírt megnevezés túl rövid! (minimum 3 karakter)';
     
         let div = document.createElement('div');
         form.append(div);
@@ -97,11 +96,25 @@ export class Calandar extends Application {
         label = document.createElement('label');
         div.append(label);
         label.htmlFor = 'description';
-        label.textContent = 'Megnevezés';
+        label.textContent = 'Leírás';
     
         input = document.createElement('textarea');
         div.append(input);
         input.id = 'description';
+
+        div = document.createElement('div');
+        form.append(div);
+
+        label = document.createElement('label');
+        div.append(label);
+        label.htmlFor = 'deadline';
+        label.textContent = 'Hátáridő';
+    
+        input = document.createElement('input');
+        div.append(input);
+        input.id = 'deadline';
+        input.type = "date";
+        input.className = "todo-date"
     
         let button = document.createElement('button');
         form.append(button);
@@ -194,8 +207,8 @@ class Controller{
         });
     }
 
-    saveNewTodo(title,description){
-        this.model.insert(title,description);
+    saveNewTodo(title, description, deadline){
+        this.model.insert(title, description, deadline);
     }
 
     // *** VIEW ***
@@ -220,15 +233,25 @@ class Controller{
 
             let title = document.getElementById('title').value;
             let description = document.getElementById('description').value;
-            if(title.length > 2) {
-                this.saveNewTodo(title,description);
-                this.inputSection.querySelector('.message').style.display = "block";
-                document.getElementById('title').value = "";
-                description = document.getElementById('description').value = "";
+            let deadline = document.getElementById('deadline').value;
+            if(deadline != NaN && Date.parse(deadline)/1000/60/60/24 >= this.model.getTime()) {
+                if(title.length > 2) {
+                    this.saveNewTodo(title, description, deadline);
+                    this.inputSection.querySelector('.message').style.display = "block";
+                    document.getElementById('title').value = "";
+                    document.getElementById('description').value = "";
+                    document.getElementById('deadline').value = "";
+                }
+                else{
+                    msg[1].style.display = "block";
+                    msg[1].textContent = 'A beírt megnevezés túl rövid! (minimum 3 karakter)';
+                }
             }
             else{
                 msg[1].style.display = "block";
+                msg[1].textContent = "A megadott lejárati dátum már vagy lejárt, vagy pedig hibás!"
             }
+            
         }
     }
 
@@ -259,31 +282,54 @@ class Controller{
     updatePercentInfo(percent){
         let info = "";
         if(percent >= 0) info = percent + "% teljesítve"
-        this.collectionSection.querySelector('p.info').innerHTML = info;
+        this.collectionSection.querySelector('p.info').textContent = info;
     }
 
     showEmptyMessage(){
-        this.collectionSection.querySelector('ul').innerHTML = '<li><h3>Nincs teendőd</h3><p>Végeztél a teendőiddel, hozd létre a következőt</p></li>'
+        this.collectionSection.querySelector('ul').textContent = "";
+        let li = document.createElement('li');
+        let h3 = document.createElement('h3');
+        let p = document.createElement('p');
+        h3.textContent = "Nincs teendőd";
+        p.textContent = "Végeztél a teendőiddel, hozd létre a következőt";
+        li.append(h3);
+        li.append(p);
+        this.collectionSection.querySelector('ul').append(li);
     }
 
     updateList(items, onDone){
-        let html = '';
+        this.collectionSection.querySelector('ul').textContent = "";
 
         for(let i in items){
             let item = items[i];
-            html += ('<li><h3>'+ item.title +'</h3><p>'+ (item.description ? item.description : "Nincs leírása a teendőnek.") +'</p><div><a href="" data-index="'+ item.index +'"><i class="fas fa-check"></i> Elkészült</a></div></li>');
-        }
-
-        this.collectionSection.querySelector('ul').innerHTML = html;
-
-        let links = this.collectionSection.querySelectorAll('ul a');
-
-        for(let i in links){
-            links[i].onclick = evt =>{
+            let li = document.createElement('li');
+            let h6 = document.createElement('h6');
+            h6.className = "deadline";
+            h6.textContent = "Határidő: " + item.deadline;
+            li.append(h6);
+            let h3 = document.createElement('h3');
+            h3.textContent = item.title;
+            li.append(h3);
+            let p = document.createElement('p');
+            p.textContent = (item.description ? item.description : "Nincs leírása a teendőnek.");
+            li.append(p);
+            let div = document.createElement('div');
+            let a = document.createElement('a');
+            a.href = "";
+            a.setAttribute("data-index",item.index)
+            div.append(a)
+            let iTag = document.createElement('i');
+            iTag.className = "fas fa-check";
+            iTag.onclick = evt =>{
                 evt.preventDefault();
-                let index = evt.target.getAttribute("data-index");
-                onDone(parseInt(index));
+                onDone(parseInt(item.index));
             }
+            a.append(iTag);
+            li.append(div);
+            if(Date.parse(item.deadline)/1000/60/60/24 < this.model.getTime()) {
+                li.className = "expired";
+            }
+            this.collectionSection.querySelector('ul').append(li);
         }
     }
 }
@@ -299,13 +345,14 @@ class Model{
         this.loadData();
     }
 
-    insert(title, description){
+    insert(title, description, deadline){
         this.list.push({
             index: this.list.length,
             title : title,
             description : description,
             done: false,
-            time: this.getTime()
+            time: this.getTime(),
+            deadline: deadline
         });
         this.saveData();
     }
