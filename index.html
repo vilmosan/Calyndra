@@ -14,25 +14,24 @@
     <body>
         <header>
             <div id="headerDiv">
-                <input type="checkbox" id="toggle"/>
-                <label for="toggle" class="material-icons"></label>
-                <nav>
-                    <menu>
-                        <li><a href="#" id="home">Home</a></li>
-                        <li><a href="#" id="sign_up">Sign up</a></li>
-                        <li><a href="#" id="calendar">Calendar</a></li>
-                        <li><a href="#" id="financials">Financials</a></li>
-                        <li><a href="#" id="your_contacts">Your contacts</a></li>
-                        <li><a href="#" id="account_settings">Account settings</a></li>
-                    </menu>
-                </nav>
+                <nav class="menu">
+                    <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+                    <label class="menu-open-button" for="menu-open">
+                      <span class="hamburger hamburger-1"></span>
+                      <span class="hamburger hamburger-2"></span>
+                      <span class="hamburger hamburger-3"></span>
+                    </label>
+                    <a href="#" id="home" class="menu-item"> <i class="fa fa-home"></i> </a>
+                    <a href="#" id="sign_up" class="menu-item"> <i class="fa fa-user-plus"></i> </a>
+                    <a href="#" id="calendar" class="menu-item"> <i class="fa fa-calendar"></i> </a>
+                    <a href="#" id="financials" class="menu-item"> <i class="fa fa-euro-sign"></i> </a>
+                    <a href="#" id="your_contacts" class="menu-item"> <i class="fa fa-address-book"></i> </a>
+                    <a href="#" id="account_settings" class="menu-item"> <i class="fa fa-user-cog"></i> </a>
+                  </nav>
             </div>
         </header>
         <main>
            <div id="canvas"></div>
-
-
-       
         </main>
         <footer>
             
