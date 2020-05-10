@@ -7,7 +7,7 @@
 3. Header / Navigation
 4. Your Contacts
 5. Calendar
-6.
+6. Account Settings
 7.
 8.
 9.
@@ -19,7 +19,8 @@
 
 # Világosbarna (Login gomb háttere): #d1b99c
 # Sötétbarna (Betűk): #4c463c
-# Tengerkék (Input mezők szegélyei) #195e99
+# Tengerkék (Input mezők szegélyei): #195e99
+# Sötétzöld (Success gombok): #556B2F
 -------------------------------------------------------------------*/
 
 /*  0. Import
@@ -934,9 +935,29 @@ table.table td i {
 				background: rgba(0,0,0, 0.1);
 			}
 
-/*  6. 
+/*  6. Account settings
 ------------------------ */
- 
+.settingsDiv{
+  font-family: monospace;
+  padding: 20px 25px;
+  margin: auto;
+}
+.settingsHeader{
+  padding-bottom: 15px;
+  background: #4c463c;
+  color: #fff;
+  padding: 16px 30px;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
+}
+#saveSettingsButton{
+  background-color: #556B2F;
+  border: none;
+}
+
+
+
+
 /*  7. 
 ------------------------ */
 
