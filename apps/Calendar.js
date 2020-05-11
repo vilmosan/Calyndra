@@ -42,7 +42,7 @@ export class Calandar extends Application {
     
         let h = document.createElement('h1');
         title_bar_div.append(h);
-        h.textContent = 'Az én To-do listám  ';
+        h.textContent = 'My To-do list  ';
 
         let i = document.createElement('i');
         h.append(i);
@@ -62,7 +62,7 @@ export class Calandar extends Application {
     
         h = document.createElement('h2');
         input_section.append(h);
-        h.textContent = 'Új teendő hozzáadása';
+        h.textContent = 'Add a new task';
     
         let form = document.createElement('form');
         input_section.append(form);
@@ -71,7 +71,7 @@ export class Calandar extends Application {
         let p = document.createElement('p');
         form.append(p);
         p.className = 'message';
-        p.textContent = 'Az új teendő adatai sikeresen rögzítésre kerültek';
+        p.textContent = 'The details of the new task have been successfully recorded';
     
         p = document.createElement('p');
         form.append(p);
@@ -83,7 +83,7 @@ export class Calandar extends Application {
         let label = document.createElement('label');
         div.append(label);
         label.htmlFor = 'title';
-        label.textContent = 'Megnevezés';
+        label.textContent = 'Title';
     
         let input = document.createElement('input');
         div.append(input);
@@ -96,7 +96,7 @@ export class Calandar extends Application {
         label = document.createElement('label');
         div.append(label);
         label.htmlFor = 'description';
-        label.textContent = 'Leírás';
+        label.textContent = 'Description';
     
         input = document.createElement('textarea');
         div.append(input);
@@ -108,7 +108,7 @@ export class Calandar extends Application {
         label = document.createElement('label');
         div.append(label);
         label.htmlFor = 'deadline';
-        label.textContent = 'Hátáridő';
+        label.textContent = 'Deadline';
     
         input = document.createElement('input');
         div.append(input);
@@ -118,7 +118,7 @@ export class Calandar extends Application {
     
         let button = document.createElement('button');
         form.append(button);
-        button.textContent = 'Hozzáadás';
+        button.textContent = 'Create';
     
         const collection_section = document.createElement('section');
         inside_div.append(collection_section);
@@ -144,7 +144,7 @@ export class Calandar extends Application {
         let a = document.createElement('a');
         li.append(a);
         a.href = "";
-        a.title = 'Új teendő';
+        a.title = 'New task';
         i = document.createElement('i');
         i.className = "fas fa-plus-square";
         a.append(i);
@@ -155,7 +155,7 @@ export class Calandar extends Application {
         a = document.createElement('a');
         li.append(a);
         a.href = "";
-        a.title = 'Teendők listája';
+        a.title = 'Tasks list';
         i = document.createElement('i');
         i.className = "far fa-list-alt";
         a.append(i);
@@ -171,7 +171,7 @@ export default Calandar;
 // *** It is similar to MVC, although the View and Controller both in the same class ***
 
 /**
- * The main class. This responsible for both the view and working strategy
+ * The main class. This responsible for both the view and business strategy
  */
 class Controller{
     constructor(){
@@ -244,12 +244,12 @@ class Controller{
                 }
                 else{
                     msg[1].style.display = "block";
-                    msg[1].textContent = 'A beírt megnevezés túl rövid! (minimum 3 karakter)';
+                    msg[1].textContent = 'The title you entered is too short! (at least 3 characters)';
                 }
             }
             else{
                 msg[1].style.display = "block";
-                msg[1].textContent = "A megadott lejárati dátum már vagy lejárt, vagy pedig hibás!"
+                msg[1].textContent = "The specified expiration date has either expired or is incorrect!"
             }
             
         }
@@ -281,7 +281,7 @@ class Controller{
 
     updatePercentInfo(percent){
         let info = "";
-        if(percent >= 0) info = percent + "% teljesítve"
+        if(percent >= 0) info = percent + "% completed"
         this.collectionSection.querySelector('p.info').textContent = info;
     }
 
@@ -290,8 +290,8 @@ class Controller{
         let li = document.createElement('li');
         let h3 = document.createElement('h3');
         let p = document.createElement('p');
-        h3.textContent = "Nincs teendőd";
-        p.textContent = "Végeztél a teendőiddel, hozd létre a következőt";
+        h3.textContent = "You have nothing to do";
+        p.textContent = "You're done with your tasks, create the following";
         li.append(h3);
         li.append(p);
         this.collectionSection.querySelector('ul').append(li);
@@ -305,13 +305,13 @@ class Controller{
             let li = document.createElement('li');
             let h6 = document.createElement('h6');
             h6.className = "deadline";
-            h6.textContent = "Határidő: " + item.deadline;
+            h6.textContent = "Deadline:: " + item.deadline;
             li.append(h6);
             let h3 = document.createElement('h3');
             h3.textContent = item.title;
             li.append(h3);
             let p = document.createElement('p');
-            p.textContent = (item.description ? item.description : "Nincs leírása a teendőnek.");
+            p.textContent = (item.description ? item.description : "The task has no description.");
             li.append(p);
             let div = document.createElement('div');
             let a = document.createElement('a');
