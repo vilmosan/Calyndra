@@ -208,6 +208,8 @@ export class YourContacts extends Application {
   }
 
   table(child, main_div) {
+    const self = this;
+
     const table = document.createElement("table");
     table.className = "table table-striped table-hover";
     child.append(table);
@@ -279,11 +281,10 @@ export class YourContacts extends Application {
       delete_button_icon.title = "Delete";
       delete_button_icon.textContent = "delete";
       delete_button.onclick = function () {
-        self.delete_button_click(tr_contact.id);
+        self.remove_button_click(main_div, tr_contact.id);
       };
 
       delete_button.append(delete_button_icon);
-      const self = this;
     }
   }
 
@@ -311,6 +312,15 @@ export class YourContacts extends Application {
     this.delete(id);
     document.getElementById("main_div").remove();
     this.initialize();
+  }
+
+  remove_button_click(child, id) {
+    const delete_contact_modal = document.createElement("div");
+    delete_contact_modal.id = "deleteContactModal";
+    delete_contact_modal.className = "modal fade";
+    child.append(delete_contact_modal);
+
+    this.delete_modal(delete_contact_modal, id);
   }
 
   save_button_click() {
@@ -494,6 +504,66 @@ export class YourContacts extends Application {
       this.modal_footer_add(modal_footer);
     }
     form.append(modal_footer);
+  }
+
+  delete_modal(child, id) {
+    const modal_dialog = document.createElement("div");
+    modal_dialog.className = "modal-dialog";
+    child.append(modal_dialog);
+
+    const modal_content = document.createElement("div");
+    modal_content.className = "modal-content";
+    modal_dialog.append(modal_content);
+
+    const form = document.createElement("form");
+    modal_content.append(form);
+
+    const modal_header = document.createElement("div");
+    modal_header.className = "modal-header";
+    form.append(modal_header);
+
+    this.modal_header(form, "Delete Contact");
+
+    const modal_body = document.createElement("div");
+    modal_body.className = "modal-body";
+    form.append(modal_body);
+
+    const p = document.createElement("p");
+    p.textContent = "Are you sure you want to delete this Contact?";
+    modal_body.append(p);
+
+    const warning_text = document.createElement("p");
+    warning_text.id = "warningText";
+    const text = document.createElement("small");
+    text.textContent = "This action cannot be undone.";
+    warning_text.append(text);
+
+    const modal_footer = document.createElement("div");
+    modal_footer.className = "modal-footer";
+    form.append(modal_footer);
+
+    const self = this;
+    const cancel_input = document.createElement("input");
+    cancel_input.type = "button";
+    cancel_input.className = "btn btn-default";
+    cancel_input.setAttribute("data-dismiss", "modal");
+    cancel_input.value = "Cancel";
+    modal_footer.append(cancel_input);
+    cancel_input.onclick = function () {
+      document.getElementById("editContactModal").remove();
+    };
+
+    const submit_input = document.createElement("input");
+    submit_input.type = "submit";
+    submit_input.className = "btn btn-danger";
+    submit_input.setAttribute("data-dismiss", "modal");
+    submit_input.id = "deleteButton";
+    submit_input.value = "Delete";
+    modal_footer.append(submit_input);
+
+    submit_input.onclick = function () {
+      self.delete_button_click(id);
+    };
   }
 }
 
