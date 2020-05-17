@@ -36,32 +36,8 @@ export class YourContacts extends Application {
   }
 
   initialize() {
-    let Vili = new Contact(
-      "0",
-      "Vass Vilmos",
-      "vassvilmos@gmail.com",
-      "36 (20) 643 2323",
-      "Adipisicing elit illum aliquid elto atque nam."
-    );
-    let Mate = new Contact(
-      "1",
-      "Kun Máté",
-      "kunmate@gmail.com",
-      "36 (70) 643 2323",
-      "Eligendi atque minus quibusdam pariatur."
-    );
-    let Marci = new Contact(
-      "2",
-      "Varga Márton",
-      "argamarton@gmail.com",
-      "+36 (30) 321 2412",
-      "Omnis illum aliquid eius atque nam ad quasi quam."
-    );
-
     if (this.list() == null) {
-      this.add(Vili);
-      this.add(Marci);
-      this.add(Mate);
+      this.add_people();
     }
 
     const main_div = document.createElement("div");
@@ -173,7 +149,34 @@ export class YourContacts extends Application {
         newdata.push(d);
       }
     }
-    this.localStorage.setItem("contact", JSON.stringify(newdata));
+    localStorage.setItem("contact", JSON.stringify(newdata));
+  }
+
+  add_people() {
+    let Vili = new Contact(
+      "0",
+      "Vass Vilmos",
+      "vassvilmos@gmail.com",
+      "36 (20) 643 2323",
+      "Adipisicing elit illum aliquid elto atque nam."
+    );
+    let Mate = new Contact(
+      "1",
+      "Kun Máté",
+      "kunmate@gmail.com",
+      "36 (70) 643 2323",
+      "Eligendi atque minus quibusdam pariatur."
+    );
+    let Marci = new Contact(
+      "2",
+      "Varga Márton",
+      "argamarton@gmail.com",
+      "+36 (30) 321 2412",
+      "Omnis illum aliquid eius atque nam ad quasi quam."
+    );
+    this.add(Vili);
+    this.add(Marci);
+    this.add(Mate);
   }
 
   th(child, textContent, iconClassName) {
@@ -249,6 +252,9 @@ export class YourContacts extends Application {
       edit_button_icon.title = "Edit";
       edit_button_icon.textContent = "edit";
       edit_button.append(edit_button_icon);
+      edit_button.onclick = function () {
+        self.edit_button_click(main_div, tr_contact.id);
+      };
 
       const delete_button = document.createElement("a");
       delete_button.href = "#deleteContactModal";
@@ -259,13 +265,12 @@ export class YourContacts extends Application {
       delete_button_icon.className = "material-icons";
       delete_button_icon.title = "Delete";
       delete_button_icon.textContent = "delete";
+      delete_button.onclick = function () {
+        self.delete_button_click(tr_contact.id);
+      };
 
       delete_button.append(delete_button_icon);
       const self = this;
-
-      edit_button.onclick = function () {
-        self.edit_button_click(main_div, tr_contact.id);
-      };
     }
   }
 
@@ -278,6 +283,24 @@ export class YourContacts extends Application {
     child.append(edit_contact_modal);
 
     this.modal(edit_contact_modal, editContact);
+  }
+  delete_button_click(id) {
+    this.delete(id);
+    document.getElementById("main_div").remove();
+    this.initialize();
+  }
+  save_button_click() {
+    const id = document.getElementById("editId").value;
+    const name = document.getElementById("editName").value;
+    const email = document.getElementById("editEmail").value;
+    const phone = document.getElementById("editPhone").value;
+    const description = document.getElementById("editDescription").value;
+    let editContact = new Contact(id, name, email, phone, description);
+    console.log(editContact);
+
+    this.update(editContact);
+    document.getElementById("main_div").remove();
+    this.initialize();
   }
 
   form_group(child, label, type, id, input_type, textContent) {
@@ -332,20 +355,6 @@ export class YourContacts extends Application {
     submit_input.onclick = function () {
       self.save_button_click();
     };
-  }
-
-  save_button_click() {
-    const id = document.getElementById("editId").value;
-    const name = document.getElementById("editName").value;
-    const email = document.getElementById("editEmail").value;
-    const phone = document.getElementById("editPhone").value;
-    const description = document.getElementById("editDescription").value;
-    let editContact = new Contact(id, name, email, phone, description);
-    console.log(editContact);
-
-    this.update(editContact);
-    document.getElementById("main_div").remove();
-    this.initialize();
   }
 
   modal(child, contact) {
