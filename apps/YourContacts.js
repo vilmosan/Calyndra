@@ -124,12 +124,13 @@ export class YourContacts extends Application {
   }
 
   next_id() {
-    let id = 0;
+    let id = -1;
     for (let i = 0; i < this.list().length; i++) {
       id = i;
     }
-    return id;
+    return (id + 1).toString();
   }
+
   update(Contact) {
     let data = this.list();
     for (let i = 0; i < data.length; i++) {
@@ -187,8 +188,8 @@ export class YourContacts extends Application {
       "Omnis illum aliquid eius atque nam ad quasi quam."
     );
     this.add(Vili);
-    this.add(Marci);
     this.add(Mate);
+    this.add(Marci);
   }
 
   th(child, textContent, iconClassName) {
