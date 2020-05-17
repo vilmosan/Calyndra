@@ -84,10 +84,14 @@ export class YourContacts extends Application {
     add_new_conntact_button.setAttribute("data-toggle", "modal");
     col_sm_6.append(add_new_conntact_button);
 
+    const self = this;
     const add_new_conntact_material_icons = document.createElement("i");
     add_new_conntact_material_icons.className = "material-icons";
     add_new_conntact_material_icons.textContent = "add_circle";
     add_new_conntact_button.append(add_new_conntact_material_icons);
+    add_new_conntact_button.onclick = function () {
+      self.new_button_click(main_div);
+    };
 
     const add_new_conntact_text = document.createElement("span");
     add_new_conntact_text.textContent = "Add New Contact";
@@ -117,6 +121,14 @@ export class YourContacts extends Application {
   add(Contact) {
     this.contacts.push(Contact);
     localStorage.setItem("contact", JSON.stringify(this.contacts));
+  }
+
+  next_id() {
+    let id = 0;
+    for (let i = 0; i < this.list().length; i++) {
+      id = i;
+    }
+    return id;
   }
   update(Contact) {
     let data = this.list();
@@ -274,6 +286,15 @@ export class YourContacts extends Application {
     }
   }
 
+  new_button_click(child) {
+    const edit_contact_modal = document.createElement("div");
+    edit_contact_modal.id = "addContactModal";
+    edit_contact_modal.className = "modal fade";
+    child.append(edit_contact_modal);
+    const editContact = new Contact("", "", "", "", "");
+    this.modal(edit_contact_modal, "Add Contact", editContact, "false");
+  }
+
   edit_button_click(child, id) {
     const editid = id;
     const editContact = this.findById(editid);
@@ -282,13 +303,15 @@ export class YourContacts extends Application {
     edit_contact_modal.className = "modal fade";
     child.append(edit_contact_modal);
 
-    this.modal(edit_contact_modal, editContact);
+    this.modal(edit_contact_modal, "Edit Contact", editContact, "true");
   }
+
   delete_button_click(id) {
     this.delete(id);
     document.getElementById("main_div").remove();
     this.initialize();
   }
+
   save_button_click() {
     const id = document.getElementById("editId").value;
     const name = document.getElementById("editName").value;
@@ -296,9 +319,25 @@ export class YourContacts extends Application {
     const phone = document.getElementById("editPhone").value;
     const description = document.getElementById("editDescription").value;
     let editContact = new Contact(id, name, email, phone, description);
-    console.log(editContact);
 
     this.update(editContact);
+    document.getElementById("main_div").remove();
+    this.initialize();
+  }
+
+  add_button_click() {
+    const name = document.getElementById("editName").value;
+    const email = document.getElementById("editEmail").value;
+    const phone = document.getElementById("editPhone").value;
+    const description = document.getElementById("editDescription").value;
+    let addContact = new Contact(
+      this.next_id(),
+      name,
+      email,
+      phone,
+      description
+    );
+    this.add(addContact);
     document.getElementById("main_div").remove();
     this.initialize();
   }
@@ -332,7 +371,7 @@ export class YourContacts extends Application {
     child.append(modal_title);
   }
 
-  modal_footer(child, button_class, button_id, button_value) {
+  modal_footer_edit(child) {
     const self = this;
     const cancel_input = document.createElement("input");
     cancel_input.type = "button";
@@ -346,10 +385,10 @@ export class YourContacts extends Application {
 
     const submit_input = document.createElement("input");
     submit_input.type = "submit";
-    submit_input.className = button_class;
+    submit_input.className = "btn btn-default";
     submit_input.setAttribute("data-dismiss", "modal");
-    submit_input.id = button_id;
-    submit_input.value = button_value;
+    submit_input.id = "saveButtonModal";
+    submit_input.value = "Save";
     child.append(submit_input);
 
     submit_input.onclick = function () {
@@ -357,7 +396,32 @@ export class YourContacts extends Application {
     };
   }
 
-  modal(child, contact) {
+  modal_footer_add(child) {
+    const self = this;
+    const cancel_input = document.createElement("input");
+    cancel_input.type = "button";
+    cancel_input.className = "btn btn-default";
+    cancel_input.setAttribute("data-dismiss", "modal");
+    cancel_input.value = "Cancel";
+    child.append(cancel_input);
+    cancel_input.onclick = function () {
+      document.getElementById("addContactModal").remove();
+    };
+
+    const submit_input = document.createElement("input");
+    submit_input.type = "submit";
+    submit_input.className = "btn btn-success";
+    submit_input.setAttribute("data-dismiss", "modal");
+    submit_input.id = "addContactButtonModal";
+    submit_input.value = "Add";
+    child.append(submit_input);
+
+    submit_input.onclick = function () {
+      self.add_button_click();
+    };
+  }
+
+  modal(child, name, contact, fotter) {
     const modal_dialog = document.createElement("div");
     modal_dialog.className = "modal-dialog";
     child.append(modal_dialog);
@@ -373,31 +437,44 @@ export class YourContacts extends Application {
     modal_header.className = "modal-header";
     form.append(modal_header);
 
-    this.modal_header(form, "Edit Contact");
+    this.modal_header(form, name);
 
     const modal_body = document.createElement("div");
     modal_body.className = "modal-body";
     form.append(modal_body);
 
-    const label = ["Id", "Name", "Email", "Phone", "Description"];
-    const type = ["text", "text", "email", "text", ""];
-    const id = [
+    let label = ["Id", "Name", "Email", "Phone", "Description"];
+    let type = ["text", "text", "email", "text", ""];
+    let id = [
       "editId",
       "editName",
       "editEmail",
       "editPhone",
       "editDescription",
     ];
-    const input_type = ["input", "input", "input", "input", "textarea"];
-    const textContent = [
+
+    let textContent = [
       contact.id,
       contact.name,
       contact.email,
       contact.phone,
       contact.description,
     ];
+    let input_type = ["input", "input", "input", "input", "textarea"];
+    if (fotter == "false") {
+      label = ["Name", "Email", "Phone", "Description"];
+      type = ["text", "email", "text", ""];
+      id = ["editName", "editEmail", "editPhone", "editDescription"];
+      input_type = ["input", "input", "input", "textarea"];
+      textContent = [
+        contact.name,
+        contact.email,
+        contact.phone,
+        contact.description,
+      ];
+    }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < input_type.length; i++) {
       this.form_group(
         modal_body,
         label[i],
@@ -407,17 +484,15 @@ export class YourContacts extends Application {
         textContent[i]
       );
     }
-    document.getElementById("editId").disabled = true;
     const modal_footer = document.createElement("div");
     modal_footer.className = "modal-footer";
+    if (fotter == "true") {
+      this.modal_footer_edit(modal_footer);
+      document.getElementById("editId").disabled = true;
+    } else {
+      this.modal_footer_add(modal_footer);
+    }
     form.append(modal_footer);
-
-    this.modal_footer(
-      modal_footer,
-      "btn btn-default",
-      "saveButtonModal",
-      "Save"
-    );
   }
 }
 
