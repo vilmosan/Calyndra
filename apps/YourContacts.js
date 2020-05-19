@@ -14,7 +14,9 @@ export class YourContacts extends Application {
     this.contacts = [];
 
     this.initialize();
+  }
 
+  initialize() {
     /**
      * Kereső funkció a 'Your Contacts' táblázathoz.
      * Egy input-boxba Enter lenyomása nélkül megvizsgálja
@@ -33,9 +35,7 @@ export class YourContacts extends Application {
         });
       })(jQuery);
     });
-  }
 
-  initialize() {
     if (this.list() == null) {
       this.add_people();
     }
@@ -124,9 +124,10 @@ export class YourContacts extends Application {
   }
 
   next_id() {
-    let id = -1;
-    for (let i = 0; i < this.list().length; i++) {
-      id = i;
+    let id = 0;
+    const contact = this.list();
+    for (let i = 0; i < contact.length; i++) {
+      id = parseInt(contact[i].id, 10);
     }
     return (id + 1).toString();
   }
@@ -167,21 +168,21 @@ export class YourContacts extends Application {
 
   add_people() {
     let Vili = new Contact(
-      "0",
+      "1",
       "Vass Vilmos",
       "vassvilmos@gmail.com",
       "36 (20) 643 2323",
       "Adipisicing elit illum aliquid elto atque nam."
     );
     let Mate = new Contact(
-      "1",
+      "2",
       "Kun Máté",
       "kunmate@gmail.com",
       "36 (70) 643 2323",
       "Eligendi atque minus quibusdam pariatur."
     );
     let Marci = new Contact(
-      "2",
+      "3",
       "Varga Márton",
       "argamarton@gmail.com",
       "+36 (30) 321 2412",
@@ -246,7 +247,7 @@ export class YourContacts extends Application {
 
       let td_textContent = [
         this.contacts[i].name,
-        this.contacts.email,
+        this.contacts[i].email,
         this.contacts[i].phone,
         this.contacts[i].description,
       ];
@@ -369,7 +370,6 @@ export class YourContacts extends Application {
       input.type = type;
     }
     input.setAttribute("required", "");
-    console.log(textContent);
 
     input.value = textContent;
     form_group_div.append(input);
@@ -432,7 +432,7 @@ export class YourContacts extends Application {
     };
   }
 
-  modal(child, name, contact, fotter) {
+  modal_main(child, name, formid) {
     const modal_dialog = document.createElement("div");
     modal_dialog.className = "modal-dialog";
     child.append(modal_dialog);
@@ -442,6 +442,7 @@ export class YourContacts extends Application {
     modal_dialog.append(modal_content);
 
     const form = document.createElement("form");
+    form.id = formid;
     modal_content.append(form);
 
     const modal_header = document.createElement("div");
@@ -452,7 +453,12 @@ export class YourContacts extends Application {
 
     const modal_body = document.createElement("div");
     modal_body.className = "modal-body";
+    modal_body.id = "modal-body";
     form.append(modal_body);
+  }
+
+  modal(child, name, contact, fotter) {
+    this.modal_main(child, name, "editform");
 
     let label = ["Id", "Name", "Email", "Phone", "Description"];
     let type = ["text", "text", "email", "text", ""];
@@ -487,7 +493,7 @@ export class YourContacts extends Application {
 
     for (let i = 0; i < input_type.length; i++) {
       this.form_group(
-        modal_body,
+        document.getElementById("modal-body"),
         label[i],
         type[i],
         id[i],
@@ -503,34 +509,15 @@ export class YourContacts extends Application {
     } else {
       this.modal_footer_add(modal_footer);
     }
-    form.append(modal_footer);
+    document.getElementById("editform").append(modal_footer);
   }
 
   delete_modal(child, id) {
-    const modal_dialog = document.createElement("div");
-    modal_dialog.className = "modal-dialog";
-    child.append(modal_dialog);
-
-    const modal_content = document.createElement("div");
-    modal_content.className = "modal-content";
-    modal_dialog.append(modal_content);
-
-    const form = document.createElement("form");
-    modal_content.append(form);
-
-    const modal_header = document.createElement("div");
-    modal_header.className = "modal-header";
-    form.append(modal_header);
-
-    this.modal_header(form, "Delete Contact");
-
-    const modal_body = document.createElement("div");
-    modal_body.className = "modal-body";
-    form.append(modal_body);
+    this.modal_main(child, "Delete Contact", "deleteform");
 
     const p = document.createElement("p");
     p.textContent = "Are you sure you want to delete this Contact?";
-    modal_body.append(p);
+    document.getElementById("modal-body").append(p);
 
     const warning_text = document.createElement("p");
     warning_text.id = "warningText";
@@ -540,7 +527,7 @@ export class YourContacts extends Application {
 
     const modal_footer = document.createElement("div");
     modal_footer.className = "modal-footer";
-    form.append(modal_footer);
+    document.getElementById("deleteform").append(modal_footer);
 
     const self = this;
     const cancel_input = document.createElement("input");
@@ -550,7 +537,7 @@ export class YourContacts extends Application {
     cancel_input.value = "Cancel";
     modal_footer.append(cancel_input);
     cancel_input.onclick = function () {
-      document.getElementById("editContactModal").remove();
+      document.getElementById("deleteContactModal").remove();
     };
 
     const submit_input = document.createElement("input");
