@@ -8,7 +8,7 @@
 4. Your Contacts
 5. Calendar
 6. Account Settings
-7.
+7. Financials
 8.
 9.
 10.
@@ -955,11 +955,251 @@ table.table td i {
   border: none;
 }
 
-
-
-
-/*  7. 
+/*  7. Financials
 ------------------------ */
+#financialsDiv .vm-main {
+  background: #fff;
+  padding: 20px 25px;
+  margin: 30px 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+#financialsDiv .vm-header {        
+  padding-bottom: 15px;
+  background: #4c463c;
+  color: #fff;
+  padding: 16px 30px;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
+}
+#financialsDiv .vm-header h1 {
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+}
+#financialsDiv #main > .inside
+{
+	width: 90%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 80px 0;
+}
+
+#financialsDiv h2
+{
+	font-weight: lighter;
+	color: #444;
+	text-align: center;
+	font-size: 130%;
+	margin: 0;
+	margin-bottom: 25px;
+}
+#financialsDiv h3
+{
+	font-weight: lighter;
+	color: #444;
+	font-size: 120%;
+	margin: 0;
+	margin-bottom: 15px;
+}
+#financialsDiv p
+{
+	margin: 0;
+	margin-bottom: 15px;
+}
+#financialsDiv a
+{
+	color: #444;
+	text-decoration: none;
+}
+#financialsDiv a:hover
+{
+	color: rgb(51, 51, 51);
+}
+#financialsDiv a:active
+{
+	color: rgb(38, 9, 32);
+}
+
+#financialsDiv ul.list
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+  #financialsDiv ul.list li
+	{
+    border-style: outset;
+    border-width: 1px;
+		padding: 25px;
+		background-color: #d1b99c3b;
+		margin: 0;
+		margin-bottom: 25px;
+    box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
+    border-radius: 5%;
+  }
+    #financialsDiv .date{
+      float: right;
+      padding-bottom: 10px;
+      font-style: italic;
+      text-align: right;
+    }
+    #financialsDiv ul.list li.positive{
+      background-color: #55ce0f3b;
+    }
+    #financialsDiv ul.list li.negative{
+      background-color: #ce0f0f3b;
+    }
+    #financialsDiv ul.list li div{
+      margin: 0;
+      padding: 0;
+    }
+    #financialsDiv ul.list li a
+		{
+			display: block;
+			float: right;
+		}
+		#financialsDiv ul.list li > div::after
+		{
+			display: block;
+			content: "";
+			clear: both;
+		}
+
+#financialsDiv form
+{
+	padding: 25px;
+	background: #fff;
+	margin: 0;
+	margin-bottom: 25px;
+	text-align: center;
+	box-shadow: 0 2px 25px rgba(0,0,0, 0.1);
+}
+  #financialsDiv form p.message
+	{
+		color: rgb(42, 171, 151);
+		padding-bottom: 10px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid rgba(42, 171, 151, 0.25);
+	}
+	#financialsDiv form p.message.error
+	{
+		color: rgb(171, 42, 42);
+		border-bottom: 1px solid rgba(171, 42, 42, 0.25);
+	}
+	#financialsDiv form > div
+	{
+		margin-bottom: 15px;
+	}
+    #financialsDiv form label
+		{
+			font-size: 95%;
+			display: block;
+			margin-bottom: 5px;
+		}
+		#financialsDiv form input,
+		#financialsDiv form textarea
+		{
+			background-color: #d1b99c3b;
+			border: 1px solid #e4e4e4;
+			padding: 10px;
+			box-sizing: border-box;
+			font-size: 100%;
+			font-family: "std";
+			color: #666;
+			width: 100%;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			outline: 0;
+      border-radius: 5%;
+      box-shadow: 1px 1px;
+		}
+		#financialsDiv form textarea
+		{
+			resize: none;
+			height: 75px;
+    }
+    #financialsDiv form input[type=date]{
+      width: 40%;
+    }
+    #financialsDiv form input[type=text]{
+      width: 40%;
+    }
+		#financialsDiv form button
+		{
+			padding: 10px;
+			box-sizing: border-box;
+			font-size: 105%;
+			text-transform: uppercase;
+			width: 100%;
+			outline: 0;
+			cursor: pointer;
+      max-width: 300px;
+      color: #4c463c;
+      background-color: #d1b99c;
+      border: 2px solid #304d66;
+      font-family: OCR A EXTENDED, monospace, serif;
+      font-stretch: ultra-expanded;
+      -webkit-box-shadow: inset 1px 1px 10px #333;
+      -moz-box-shadow:    inset 1px 1px 10px #333;
+      box-shadow:         inset 1px 1px 10px #333;
+      border-radius: 5%;
+		}
+		#financialsDiv form button:hover
+		{
+			background: #4c463c;
+      border: 2px solid #d1b99c;
+      color: #fff;
+		}
+		#financialsDiv form button:active
+		{
+			background: rgb(38, 9, 32);
+		}
+
+#financialsDiv #navigation-bar
+{
+	position: fixed;
+	bottom: 0;
+	width: 80%;
+	height: 65px;
+	border-top: 1px solid #e8e8e8;
+  background: #f4f4f4;
+  margin: auto;
+}
+  #financialsDiv #navigation-bar > ul
+	{
+		width: 90%;
+		height: 100%;
+		max-width: 500px;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+	}
+    #financialsDiv #navigation-bar > ul li
+		{
+			width: 50%;
+			height: 100%;
+			float: left;
+			text-align: center;
+		}
+      #financialsDiv #navigation-bar > ul li a
+			{
+				display: block;
+				height: 100%;
+				text-decoration: none;
+				color: #888;
+				padding-top: 10px;
+				font-size: 175%;
+			}
+			#financialsDiv #navigation-bar > ul li a:hover
+			{
+				background: rgba(0,0,0, 0.05);
+			}
+			#financialsDiv #navigation-bar > ul li a:active
+			{
+				background: rgba(0,0,0, 0.1);
+			}
 
 /*  8. 
 ------------------------ */

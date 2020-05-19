@@ -25,13 +25,13 @@ export class Calandar extends Application {
         
         // calendarDiv
         const calendar_div = document.createElement('div');
-        calendar_div.id = 'calendarDiv'
+        calendar_div.id = 'calendarDiv';
         calendar_div.className = "contactsDiv container col-10";
         canvas.append(calendar_div);
 
         // calendarMainDiv
         const calendar_main_div = document.createElement('div');
-        calendar_main_div.id = 'calendarMainDiv'
+        calendar_main_div.id = 'calendarMainDiv';
         calendar_main_div.className = "vm-main";
         calendar_div.append(calendar_main_div);
 
@@ -123,6 +123,7 @@ export class Calandar extends Application {
         const collection_section = document.createElement('section');
         inside_div.append(collection_section);
         collection_section.className = "collection";
+        
         p = document.createElement('p');
         collection_section.append(p);
         p.className = 'info';
@@ -234,7 +235,7 @@ class Controller{
             let title = document.getElementById('title').value;
             let description = document.getElementById('description').value;
             let deadline = document.getElementById('deadline').value;
-            if(deadline != NaN && Date.parse(deadline)/1000/60/60/24 >= this.model.getTime()) {
+            if(Date.parse(deadline).toString() != "NaN" && Date.parse(deadline)/1000/60/60/24 >= this.model.getTime()) {
                 if(title.length > 2) {
                     this.saveNewTodo(title, description, deadline);
                     this.inputSection.querySelector('.message').style.display = "block";
@@ -305,7 +306,7 @@ class Controller{
             let li = document.createElement('li');
             let h6 = document.createElement('h6');
             h6.className = "deadline";
-            h6.textContent = "Deadline:: " + item.deadline;
+            h6.textContent = "Deadline: " + item.deadline;
             li.append(h6);
             let h3 = document.createElement('h3');
             h3.textContent = item.title;
@@ -341,8 +342,8 @@ class Model{
     constructor(){
         this.list = [];
 
-        this.refactoringData();
         this.loadData();
+        this.refactoringData();
     }
 
     insert(title, description, deadline){
@@ -412,6 +413,7 @@ class Model{
 
         for(let i = this.list.length - 1; i >= 0; i--){
             let item = this.list[i];
+            let time = this.getTime();
             if(item.done && time - item.time > 5){
                 let begin = this.list.slice(0,i);
                 let end = this.list.slice(i+1,this.list.length);
