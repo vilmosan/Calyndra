@@ -40,6 +40,11 @@ window.addEventListener("DOMContentLoaded", function () {
         app = new AccountSettings(document.getElementById("canvas"));
     });
 
+    const LoginButton = document.getElementById("loginButtonId");
+    LoginButton.addEventListener("click", function () {
+        app = new Calendar(document.getElementById("canvas"));
+    });
+
 
 });
 
