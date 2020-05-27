@@ -1066,6 +1066,8 @@ table.table td i {
 			clear: both;
 		}
 
+/*  7. Signup
+------------------------ */
 #financialsDiv form
 {
 	padding: 25px;
@@ -1200,6 +1202,29 @@ table.table td i {
 			{
 				background: rgba(0,0,0, 0.1);
 			}
+
+#h1element{
+  background: #4c463c;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 10px;
+  padding: 16px 30px;
+  margin: 20px 25px 10px;   
+  font-size: 24px;
+  text-align: center;
+  border-radius: 3px 3px 0 0;
+}
+#signupdiv{
+	background-color:fff;
+}
+
+#signupdiv input{
+	border: solid 1px #195e99;
+}
+#signupdiv #signup{
+	background-color:#556B2F
+}
+
 
 /*  8. 
 ------------------------ */
