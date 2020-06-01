@@ -695,6 +695,10 @@ table.table td i {
   font-weight: normal;
 }	
 
+.modal-title{
+  padding-left: 7em;
+}
+
 
 /*  5. Calendar
 ------------------------ */

@@ -165,7 +165,8 @@ signup_div.append(gender_div);
 
 const gender_label = document.createElement("label");
 gender_div.append(gender_label);
-gender_label.textContent=("Your gender:")
+gender_label.textContent=("Your gender:");
+gender_label.style = "margin-top: 20px;";
 
 const br = document.createElement("br");
 gender_div.append(br);
@@ -259,7 +260,7 @@ checkbox1_div.classname = "checkbox";
 checkbox_div.append(checkbox1_div);
 
 const checkbox1_label = document.createElement("label");
-checkbox1_label.textContent = "Accept our terms and policies";
+checkbox1_label.innerHTML = "Accept our <a href=''>terms and policies</a>";
 checkbox1_div.append(checkbox1_label);
 
 const checkbox1_input = document.createElement("input");

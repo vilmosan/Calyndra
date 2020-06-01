@@ -291,8 +291,8 @@ class Controller{
         let li = document.createElement('li');
         let h3 = document.createElement('h3');
         let p = document.createElement('p');
-        h3.textContent = "You have nothing to do";
-        p.textContent = "You're done with your tasks, create the following";
+        h3.textContent = "You have nothing to do.";
+        p.textContent = "Enjoy your rest or create more upcoming tasks!";
         li.append(h3);
         li.append(p);
         this.collectionSection.querySelector('ul').append(li);

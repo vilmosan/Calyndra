@@ -307,7 +307,7 @@ class Controller{
 
     updateSumInfo(sum){
         let info = "";
-        if(this.currency != null) info = sum + " "+ this.currency +" the total value."
+        if(this.currency != null) info = "Your balance: " + sum + " "+ this.currency;
         this.collectionSection.querySelector('p.info').textContent = info;
     }
 

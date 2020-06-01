@@ -171,20 +171,20 @@ export class YourContacts extends Application {
       "1",
       "Vass Vilmos",
       "vassvilmos@gmail.com",
-      "36 (20) 643 2323",
+      "+36 (20) 643 2323",
       "Adipisicing elit illum aliquid elto atque nam."
     );
     let Mate = new Contact(
       "2",
       "Kun Máté",
       "kunmate@gmail.com",
-      "36 (70) 643 2323",
+      "+36 (70) 643 2323",
       "Eligendi atque minus quibusdam pariatur."
     );
     let Marci = new Contact(
       "3",
       "Varga Márton",
-      "argamarton@gmail.com",
+      "vargamarton@gmail.com",
       "+36 (30) 321 2412",
       "Omnis illum aliquid eius atque nam ad quasi quam."
     );
